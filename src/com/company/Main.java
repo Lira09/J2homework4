@@ -6,42 +6,44 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<String> states = new ArrayList<>();
-        Iterator<String> iterator = states.iterator();
-        System.out.println("Enter the name of the state ");
         Scanner scanner = new Scanner(System.in);
 
-        states.add(scanner.next());
-        states.add(scanner.next());
-        states.add(scanner.next());
-        states.add(scanner.next());
-        states.add(scanner.next());
+        System.out.println("Enter the size of the state ");
+        int values = scanner.nextInt();
 
-        Collections.sort(states);
+        System.out.println("Enter the name of the states ");
+        ArrayList<String> states = new ArrayList<>(values);
+        while (values > states.size()) {
+            states.add(scanner.next());
+        }
+
         print(states);
 
-        ArrayList<String> states1 = new ArrayList<>();
-        Iterator<String> iterator1 = states1.iterator();
-        states1.add(scanner.next());
-        states1.add(scanner.next());
-        states1.add(scanner.next());
-        states1.add(scanner.next());
-        states1.add(scanner.next());
+
+        System.out.println("_______________");
 
 
+        ArrayList<String> states1 = new ArrayList<>(values);
+        while (values > states1.size()) {
+            states1.add(scanner.next());
+        }
 
-        Collections.sort(states1);
         Collections.reverse(states1);
-       print(states1);
+        print(states1);
 
-        ArrayList<String> states3 = new ArrayList<>();
-        int i =0;
-        while (states3.size() < 9){
+
+        System.out.println("______________");
+
+        ArrayList<String> states3 = new ArrayList<>(values);
+        int i = 0;
+        while (states3.size() < states.size() + states1.size()) {
             states3.add(states.get(i));
             states3.add(states1.get(i));
             i++;
         }
         print(states3);
+
+
         Collections.sort(states3, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
@@ -50,9 +52,10 @@ public class Main {
         });
         print(states3);
     }
-    public static void print(ArrayList <?> list){
+
+    public static void print(ArrayList<?> list) {
         System.out.println("------------------------------");
-    Iterator<String> iterator = (Iterator<String>) list.iterator();
+        Iterator<String> iterator = (Iterator<String>) list.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
